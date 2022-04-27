@@ -25,6 +25,8 @@
           transition="scale-transition"
           width="100"
         />
+
+        <h1>Achmad Pahlevy Vue C</h1>
       </div>
 
       <v-spacer></v-spacer>

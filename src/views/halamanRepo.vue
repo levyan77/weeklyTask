@@ -31,22 +31,39 @@
             {{ data.repotugas_by_pk.title }}
         </h1>
 
-        <div v-for="isi in data.repotugas_by_pk.isirepotugas" :key="isi.id">
-            <a v-if="isi.linkpraktikum" :href= "isi.linkpraktikum">Link Praktikum</a> 
-            <div v-if="isi.summary">
-                {{isi.summary}}    
+        
+        <div v-for="link in data.repotugas_by_pk.isirepotugas" :key="link.id" class="mt-5"> 
+            <div v-if="link.linkpraktikum">
+                <v-chip
+                color="orange"
+                link
+                :href="link.linkpraktikum"
+                >Link Praktikum</v-chip>  
+            </div>
+        </div>
+        
+        <div class="mt-5">
+            <h2>Summary</h2>
+            <div v-for="isi in data.repotugas_by_pk.isirepotugas" :key="isi.id"> 
+                <div v-if="isi.summary">
+                    <ul>
+                        <li>{{isi.summary}}</li>
+                    </ul>  
+                </div>
             </div>
         </div>
 
-        <div v-for="task in data.repotugas_by_pk.isirepotugas" :key="task.id">
-            <div v-if="task.task">
-                {{task.task}}
+        <div class="mt-5">
+            <h2>Task</h2>
+            <div v-for="task in data.repotugas_by_pk.isirepotugas" :key="task.id">
+                <div v-if="task.task">
+                    {{task.task}}
+                </div>
             </div>
         </div>
 
 
-
-        <div v-for="gambar in data.repotugas_by_pk.isirepotugas" :key="gambar.id">
+        <div v-for="gambar in data.repotugas_by_pk.isirepotugas" :key="gambar.id" class="mt-5" >
             <v-card class="mx-auto" max-width="700">
                 <v-img v-if="gambar.screenshoots" :src="gambar.screenshoots"></v-img>
             </v-card>
