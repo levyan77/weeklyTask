@@ -2,7 +2,9 @@
   <v-app>
     <v-app-bar
       app
-      color="primary"
+      clipped-left
+      fixed
+      color="warning"
       dark
     >
       <div class="d-flex align-center">
@@ -43,9 +45,9 @@
 
     <v-navigation-drawer
           v-model="drawer"
-          absolute
-          bottom
-          temporary
+          fixed
+          app
+          clipped
         >
           <v-list
             nav
@@ -53,7 +55,7 @@
           >
             <v-list-item-group
               v-model="group"
-              active-class="deep-purple--text text--accent-4"
+              active-class="deep-orange--text text--accent-4"
             >
               <ApolloQuery
               :query="gql => gql`
