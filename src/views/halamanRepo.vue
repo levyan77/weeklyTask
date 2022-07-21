@@ -4,8 +4,10 @@
     :query="gql => gql`
         query MyQuery($id: Int!) {
         repotugas_by_pk(id: $id) {
+            id
             title
             isirepotugas {
+            id
             linkpraktikum
             screenshoots
             summary
@@ -53,44 +55,76 @@
             </div>
         </div>
 
-        <div class="mt-5">
-            <h2>Task</h2>
-            <div v-for="task in data.repotugas_by_pk.isirepotugas" :key="task.id">
-                <div v-if="task.task">
-                    {{task.task}}
+
+
+        <div v-if="data.repotugas_by_pk.id == 8 ||
+             data.repotugas_by_pk.id == 9
+             ||
+             data.repotugas_by_pk.id == 10
+             ||
+             data.repotugas_by_pk.id == 11
+             ||
+             data.repotugas_by_pk.id == 18
+             ">
+            <div class="mt-5">
+                <h2>Task</h2>
+                <div v-for="task in data.repotugas_by_pk.isirepotugas" :key="task.id">
+                    <div v-if="task.task">
+                        <ul>
+                            <li>{{task.task}}
+                                <v-card class="mx-auto mb-6" max-width="1200">
+                                    <v-img v-if="task.screenshoots " :src="task.screenshoots"></v-img>
+                                </v-card>
+                            </li>
+                        </ul>  
+                    </div>
                 </div>
             </div>
+
         </div>
 
+        <div v-else>
+            <div class="mt-5">
+                <h2>Task</h2>
+                <div v-for="task in data.repotugas_by_pk.isirepotugas" :key="task.id">
+                    <div v-if="task.task">
+                        <ul>
+                            <li>{{task.task}}</li>
+                        </ul>  
+                    </div>
+                </div>
+            </div>
 
-        <div v-for="gambar in data.repotugas_by_pk.isirepotugas" :key="gambar.id" class="mt-5" >
-            <v-card class="mx-auto" max-width="700">
-                <v-img v-if="gambar.screenshoots" :src="gambar.screenshoots"></v-img>
-            </v-card>
+
+            <div v-for="gambar in data.repotugas_by_pk.isirepotugas" :key="gambar.id" class="mt-5" >
+                <v-card class="mx-auto" max-width="1200">
+                    <v-img v-if="gambar.screenshoots" :src="gambar.screenshoots"></v-img>
+                </v-card>
 
 
-                <!-- <v-carousel v-model="model" v-if="gambar.screenshoots">
-                    <v-carousel-item
-                    v-for="item in gambar"
-                    :key="item.id"
-                    >
-                    <v-sheet
-                        height="100%"
-                        tile
-                    >
-                        <v-row
-                        class="fill-height"
-                        align="center"
-                        justify="center"
+                    <!-- <v-carousel v-model="model" v-if="gambar.screenshoots">
+                        <v-carousel-item
+                        v-for="item in gambar"
+                        :key="item.id"
                         >
-                        <div class="text-h2">
-                            {{item}}
-                        </div>
-                        </v-row>
-                    </v-sheet>
-                    </v-carousel-item>
-                </v-carousel> -->
+                        <v-sheet
+                            height="100%"
+                            tile
+                        >
+                            <v-row
+                            class="fill-height"
+                            align="center"
+                            justify="center"
+                            >
+                            <div class="text-h2">
+                                {{item}}
+                            </div>
+                            </v-row>
+                        </v-sheet>
+                        </v-carousel-item>
+                    </v-carousel> -->
 
+            </div>
         </div>
         
     </div>
