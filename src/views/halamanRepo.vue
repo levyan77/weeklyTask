@@ -67,6 +67,8 @@
              data.repotugas_by_pk.id == 18
              ||
              data.repotugas_by_pk.id == 19
+             ||
+             data.repotugas_by_pk.id == 21
              ">
             <div class="mt-5">
                 <h2>Task</h2>
